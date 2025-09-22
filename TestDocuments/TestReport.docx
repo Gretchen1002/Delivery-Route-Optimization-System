@@ -1,0 +1,138 @@
+Test Summary Report Template
+
+
+
+ 
+
+Table of Contents
+1.	Introduction	3
+1.1	Background	3
+1.2	Structure of the Report	3
+1.3	References	3
+2.	Overview	4
+3.	Adjustments	5
+4.	Assessment	5
+5.	Results	6
+6.	Evaluation	7
+7.	Summary of Activities	7
+
+
+
+
+ 
+1.	Introduction
+1.1	Background
+This document provides the Test Summary for the testing activities.
+The aim of the “Winter25-SFT221-NHH-3 Shipment-Program” project is to implement the program code which will meet all of the customer’s requirements and to ensure that the entire program will be validates in assurance and completely handle any errors. 
+version 1.1	updated at 2/25/2025
+version 1.2	updated at 3/11/2025
+version 1.3	updated at 3/18/2025
+version 1.4	updated at 3/25/2025
+version 1.5	updated at 4/3/2025
+version 1.6	updated at 4/8/2025
+
+1.2	Structure of the Report
+This report is structured in the following manner:
+●	Section 2, Overview, provides an overview of the significant events and activities.
+●	Section 3, Adjustments, records any modifications of the items from those areas agreed on previously, especially in areas that may cause concern to the group accepting the test results, including any references to supporting documentation that covers the reasons for the changes.
+●	Section 4, Assessment, provides a brief assessment of the comprehensiveness of the testing process.
+●	Section 5, Results, provides a summary of the results.
+●	Section 6, Evaluation, provides an overall evaluation of the testing process including any observed problems and/or limitations.
+●	Section 7 provides a summary of the major testing activities and events.
+
+1.3	References
+Group 3. (2025). Function Description. 
+Group 3. (2025). Group contact.
+Group 3. (2025). Scrum report 1 – 6.
+Group 3. (2025). Test plan.
+Group 3. (2025). MS03 Black Box Unit Test description.
+Group 3. (2025). MS04 White Box Unit Test description.
+Group 3. (2025). MS05 Acceptance test cases.
+Group 3. (2025). MS05 Integration test description.
+Group 3. (2025). Traceability matrix.
+Group 3. (2025). deliver.c
+Group 3. (2025). dataStruct.h
+Group 3. (2025). Main.c
+2.	Overview
+This section provides a high-level overview of the significant events and activities.
+This section also specifies the scope of the testing (what was and what was not tested), and specifying the test environment details (including the hardware, software and data used in the testing).
+
+This project Shipment-Program, was tested in a Windows 11 environment using Visual Studio 2022 with C++. 
+The program was designed for transport company workers (mainly men aged 30–40) to help find the best delivery routes in a 25x25 city grid while considering truck limits and roadblocks like buildings.
+The goal of testing was to make sure the program chooses the best delivery path and works correctly without errors. We used different types of testing, including unit, integration, system, and acceptance testing.
+What we tested:
+Truck route calculations using Euclidean distance
+Package assignments based on size, weight, and truck capacity
+Outputs and messages matched the expected results
+The program's behavior with both correct and incorrect inputs
+
+What we did not test:
+Database connections
+Real-time tracking of trucks
+
+The tools we used included Visual Studio, Excel, GitHub, Jira, and Teams. Testing was done by developers, QA testers, and managed by the project manager.
+Success was measured by how well the program avoided obstacles, used truck space properly, handled errors, and produced correct output. Risks included wrong truck assignments, poor route choices, or errors in distance and capacity calculations.
+
+
+3.	Adjustments
+This section is used to record any changes of the items from those areas agreed on previously, especially in areas that may cause concern to the group accepting the test results, including any references to supporting documentation that covers the reasons for the changes.
+
+At the beginning of the project, we created the selectTrack function to help choose the best truck for a shipment based on available volume and weight. However, as the project progressed and more functionality was implemented, we realized that this function alone was not enough to select the most appropriate truck route.
+While available volume and weight are necessary conditions for a truck to carry a package, they are not the main criteria for choosing a truck. The correct approach should be based on the distance from each route (blue, green, and yellow) to the destination. We need to choose the route with the shortest distance to the destination, and then check whether the truck still has enough space and weight capacity to carry the package.
+Therefore, we created a new function called findTruck4Shipment, which compares the distances from all three routes to the destination, and selects the truck based on the shortest path. Only after the closest truck is identified do we verify its capacity. This change was essential to ensure the project produces correct and expected outputs.
+(reference: deliver.c)
+4.	Assessment
+This section provides a brief assessment of the comprehensiveness of the testing process for the completed testing phase against the test objectives and constraints specified in the Test Plan document.
+This whole project and testing are able to cover and ensure that shipment-program can select optimal path and select best truck to deliver package using expected user input and unexpected user input. Through all milestone and update could achieve pre-set purpose of test. 
+When compared to the pre-defined scope, our implemented 88 test cases could cover all requirement through unit test (black and white box), integration test and acceptance test. Especially in test plan mentioned about calculate Euclidean distance to find shortest path and validate package and select best truck to deliver without overload, those scope could test all three types of test cases (unit, integration and acceptance). 
+This project defined 9 requirements to meet all program accountability and completeness. Below chart represents how many test cases implemented each requirement.
+1	2	3	4	5	6	7	8	9
+42	34	20	13	8	5	24	9	5
+
+From this chart, our test cases could cover all requirements. As a point to keep in mind in verifying this result, some new functions were created as milestones progressed and some requirement test cases like find shortest path could only be tested afterwards, so the number of tests has been biased.
+5.	Results
+This section provides a summary of the results, identifies all resolved issues and summarises the details of their resolution, and lists any outstanding issues.
+
+Throughout the milestone, our team collaboratively created 3 new data structures and 7 new functions. At the beginning of the testing phase, we developed a comprehensive test plan for the entire project. We then completed 6 sets of black-box unit tests and white-box unit tests, 4 sets of integration tests, and 9 acceptance tests, along with all related test documents, including test data, test results, and the traceability matrix.
+We successfully implemented the entire project and achieved the correct output as expected. All team members made timely and effective use of GitHub and Jira for collaboration and project tracking.
+
+Resolved Issues and Solutions:
+1.	Successful implementation to meet expected output:
+We thoroughly understood the project requirements and the instructor-provided code. Through strong team collaboration and clear division of tasks, we achieved the expected results.
+2.	Debugging issues:
+By using the Visual Studio debugging tools and comparing outputs with expected results, we identified and resolved logic errors in the code.
+
+Outstanding Issues:  None.
+6.	Evaluation
+This section provides an overall evaluation of the testing process including problems (not fixed issues) and limitations.
+Overall evaluation of the testing processes we have done: to ensure our project can be executed appropriately and meets all the business requirements, we followed a comprehensive software testing life cycle, including black box tests, white box tests, integration tests and acceptance tests – started from designing and planning these tests on documents, then writing codes and used Visual Studio to run the tests. We used unit tests to do early detection of bugs or issues, followed by integration tests to ensure every single module can work correctly as a whole, and finally we ran acceptance tests to validate the whole program meets business requirements. Besides, we implemented git hooks in our git hub repositories to prevent failed codes to be pushed into the repository.
+During our testing phases, unit tests helped us detected bugs from early stage, so that in the later stages like integration testing and acceptance testing, we only needed to focus on verifying major component interactions, testing on user requirements have been met, and validating our route algorithm and truck selection.
+Although we tried our best to fix bugs and issues found and can proudly announce that there is no remaining unfixed issue, we did find some testing limitations. First, when creating test cases, we selected test data based on our knowledge, this may limit the variety of edge cases to be tested. Second, due to limited time, we could only do 4 sets of test cases for each white box, black box, integration and acceptance tests, this may lead to insufficient coverage of testing all possible scenarios. 
+
+
+7.	Summary of Activities
+This section provides a summary of the major testing activities and events. This section also summarises testing resource information, such as total staffing levels, total testing time, cost, etc.
+
+Testing activities timeline:
+MILESTONE #	MAJOR TESTING ACTIVITIES 
+MILESTONE 1	Project discussion and team set up.
+MILESTONE 2	Developed test plan and designed data structure.  
+MILESTONE 3	Designed black box tests, completed test case document, implemented first sets of black box tests; filled in traceability matrix form with business requirements and match test cases with the requirements.
+MILESTONE 4	Completed the rest sets of black box tests; set up git hooks; designed, documented, and implemented white box tests; updated traceability matrix form; all functions implemented have been tested.
+MILESTONE 5	Continued with the rest white box tests; designed, documented, and implemented integration testing; designed, documented, and implemented acceptance testing; updated traceability matrix form; the whole program has been tested.
+MILESTONE 6	Checked for remaining bugs and issues; went through all testing cases have done so far and performance validation done; final test report has been done.
+	
+
+Staffing:
+Since the project was set up in a group-learning environment, every team member worked as multiple roles in rotation: test designer, implementer, executor, analyst, and also documentation clerk.
+Total testing time:
+TESTING ACTIVITIES	% OF TOTAL TIME SPENT
+TEST PLAN	5%
+BLACK BOX TESTING	15%
+WHITE BOX TESTING	15%
+INTEGRATION TESTING	30%
+ACCEPTANCE TESTING	30%
+DOCUMENTATION	5%
+TOTAL	100%
+
+
